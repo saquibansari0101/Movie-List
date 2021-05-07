@@ -53,62 +53,67 @@ class _MyHomePageState extends State<MyHomePage> {
             child: ListView.builder(
                 itemCount: 5,
                 itemBuilder: (context, i) {
-                  return Card(
-                    color: primary,
-                    child: Container(
-                      height: 200,
-                      width: 300,
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                                width: 190,
-                                height: 190,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    image: DecorationImage(
-                                        image: NetworkImage(
-                                            'https://images.pexels.com/photos/4348424/pexels-photo-4348424.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'),fit: BoxFit.fill))),
-                          ),
-                          Expanded(
-                            child: Container(
-                              margin: EdgeInsets.all(12),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Title",
-                                    maxLines: 2,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20),
-                                  ),
-                                  Text(
-                                    "Genre",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 15),
-                                  ),
-                                  Text(
-                                    "IMDB rating",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 15),
-                                  ),
-                                  Text(
-                                    "Description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                                    maxLines: 3,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        fontSize: 12),
-                                  ),
-                                ],
+                  return InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailView(movieName: "Jesus is love!",)));
+                    },
+                    child: Card(
+                      color: primary,
+                      child: Container(
+                        width: 300,
+                        height: 200,
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                  width: 190,
+                                  height: 190,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      image: DecorationImage(
+                                          image: NetworkImage(
+                                              'https://images.pexels.com/photos/4348424/pexels-photo-4348424.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'),fit: BoxFit.fill))),
+                            ),
+                            Expanded(
+                              child: Container(
+                                margin: EdgeInsets.all(12),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Title",
+                                      maxLines: 2,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20),
+                                    ),
+                                    Text(
+                                      "Genre",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 15),
+                                    ),
+                                    Text(
+                                      "IMDB rating",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 15),
+                                    ),
+                                    Text(
+                                      "Description Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                                      maxLines: 3,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          fontSize: 12),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   );
@@ -119,3 +124,24 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+class MovieDetailView extends StatelessWidget {
+  final String movieName;
+
+  const MovieDetailView({Key key, this.movieName}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Details Pane"),),
+      body: Center(
+        child: Container(
+          child: InkWell(
+              onTap: () {},
+              child: Text("HERE WE GO $movieName")),
+        ),
+      ),
+    );
+  }
+}
+
